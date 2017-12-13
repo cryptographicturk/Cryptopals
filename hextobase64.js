@@ -9,10 +9,8 @@ const hexToBase64 = function(hexIn) {
 	bitIterator = 0;
 	bitLength = hexIn.length * 4;
 	returnString = '';
-	console.log(returnString);
 	while(bitLength > bitIterator) {
 		number6bits = bitwise.readUInt(buffer, bitIterator, 6);
-		console.log(number6bits);
 		returnString += numberToBase64(number6bits);
 		bitIterator+=6;
 	}
