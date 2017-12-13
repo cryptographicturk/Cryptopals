@@ -1,28 +1,22 @@
-const hexDigitToDecimal = function(hexIn) {
-        return '0123456789abcdefgh'.indexOf(hexIn);
-}
+var bitwise = require('bitwise');
 
-const digitToBase64 = function(digitIn) {
-        return 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'[digitIn];
+const numberToBase64 = function(numberIn) {
+       	return 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'[numberIn];
 }
 
 const hexToBase64 = function(hexIn) {
-        base64 = '';
-        hexLength = hexIn.length;
-        iterator = 0;
-        innerIterator = 3;
-	value = 0;
-        while(hexLength > iterator) {
-                value += Math.pow(16, innerIterator) * hexDigitToDecimal(hexIn[iterator]);
-                innerIterator--;
-                if(innerIterator < 0) {
-                        base64 += digitToBase64(value);
-                        innerIterator = 3;
-                        value = 0;
-                }
-		iterator++;
-        }
-        return base64;
+	var buffer = new Buffer(hexIn, 'hex');
+	bitIterator = 0;
+	bitLength = hexIn.length * 4;
+	returnString = '';
+	console.log(returnString);
+	while(bitLength > bitIterator) {
+		number6bits = bitwise.readUInt(buffer, bitIterator, 6);
+		console.log(number6bits);
+		returnString += numberToBase64(number6bits);
+		bitIterator+=6;
+	}
+	return returnString;
 }
 
 console.log(hexToBase64('49276d206b696c6c696e6720796f757220627261696e206c696b65206120706f69736f6e6f7573206d757368726f6f6d'));
