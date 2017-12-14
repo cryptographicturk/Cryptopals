@@ -1,5 +1,4 @@
 var bitwise = require('bitwise');
-var bitbuffer = require('bit-buffer');
 
 const xor = function(hexIn1, hexIn2) {
 	var inputBuffer1 = new Buffer(hexIn1, 'hex');
@@ -12,16 +11,16 @@ const xor = function(hexIn1, hexIn2) {
 	iterator = 0;
 	bitArray1 = bitwise.readBuffer(inputBuffer1);
 	bitArray2 = bitwise.readBuffer(inputBuffer2);
-	var bitStream = new BitStream();
+	var bitStream = new Buffer('','binary');
 	while(iterator < bitLength1) {
 		if(bitArray1[iterator] == bitArray2[iterator]) {
-			bitStream.writeBits(0,iterator);
+			bitStream[iterator] = 0;
 		} else {
-			bitStream.writeBits(1,iterator);
+			bitStream[iterator] = 1;
 		}
 		iterator++;
 	}
-	return bitStream.readASCIIString();
+	return bitStream.toString('utf-8');
 }
 
 const xorAgainstKnown = function(hexIn) {

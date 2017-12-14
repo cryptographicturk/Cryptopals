@@ -17,7 +17,6 @@
   },
   "homepage": "https://github.com/cryptographicturk/Cryptopals#readme",
   "dependencies": {
-    "bit-buffer": "^0.2.3",
     "bitwise": "^0.2.0"
   }
 }
