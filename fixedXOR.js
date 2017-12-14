@@ -1,28 +1,7 @@
 var bitwise = require('bitwise');
+var bitbuffer = require('bit-buffer');
 
 const xor = function(hexIn1, hexIn2) {
-	var inputBuffer1 = new Buffer(hexIn1, 'hex');
-	var inputBuffer2 = new Buffer(hexIn2, 'hex');
-	hexLength1 = hexIn1.length;
-	hexLength2 = hexIn2.length;
-	if(hexLength1 != hexLength2) {
-		return -1;
-	}
-	iterator = 0;
-	while(iterator < hexLength1) {
-		innerIterator = 1;
-		nBits = 4;
-		while(innerIterator < nBits) {
-			if(bitArray1[innerIterator] == bitArray2[innerIterator]) {
-				binaryReturnString += '0';
-			} else {
-				binaryReturnString += '1';
-			}
-			innerIterator++;
-		}
-	}
-}
-const xor = function(hexIn1,hexIn2) {
 	var inputBuffer1 = new Buffer(hexIn1, 'hex');
 	var inputBuffer2 = new Buffer(hexIn2, 'hex');
 	bitLength1 = hexIn1.length * 4;
@@ -30,21 +9,19 @@ const xor = function(hexIn1,hexIn2) {
 	if(bitLength1 != bitLength2) {
 		return -1;
 	}
-	bitIterator = 0;
-	var binaryReturnString = '';
+	iterator = 0;
 	bitArray1 = bitwise.readBuffer(inputBuffer1);
 	bitArray2 = bitwise.readBuffer(inputBuffer2);
-	while(bitIterator < bitLength1) {
-		if(bitArray1[bitIterator] == bitArray2[bitIterator]) {
-			binaryReturnString += '0';
+	var bitStream = new BitStream();
+	while(iterator < bitLength1) {
+		if(bitArray1[iterator] == bitArray2[iterator]) {
+			bitStream.writeBits(0,iterator);
 		} else {
-			binaryReturnString += '1';
+			bitStream.writeBits(1,iterator);
 		}
-		bitIterator++;
+		iterator++;
 	}
-	var returnBits = bitwise.toBits(binaryReturnString);
-	returnBuffer = new Buffer(returnBits, 'binary');
-	return returnBuffer.toString();
+	return bitStream.readASCIIString();
 }
 
 const xorAgainstKnown = function(hexIn) {

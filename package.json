@@ -1,0 +1,23 @@
+{
+  "name": "cryptopals",
+  "version": "1.0.0",
+  "description": "",
+  "main": "fixedXOR.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cryptographicturk/Cryptopals.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cryptographicturk/Cryptopals/issues"
+  },
+  "homepage": "https://github.com/cryptographicturk/Cryptopals#readme",
+  "dependencies": {
+    "bit-buffer": "^0.2.3",
+    "bitwise": "^0.2.0"
+  }
+}
