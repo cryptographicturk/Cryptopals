@@ -20,7 +20,6 @@ const xor = function(hexIn1, hexIn2) {
 		}
 		iterator++;
 	}
-debugger;
 	var hexdata = bitwise.createBuffer(returnArray);
 	return hexdata.toString('hex');
 }
