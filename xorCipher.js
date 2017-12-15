@@ -80,4 +80,7 @@ const xorChar = function(hexIn, charIn) {
 	return hexdata.toString('hex');
 }
 
+var freqHash = englishFreqHash;
+var char = '0';
+
 
