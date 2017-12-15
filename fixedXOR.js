@@ -11,17 +11,18 @@ const xor = function(hexIn1, hexIn2) {
 	iterator = 0;
 	bitArray1 = bitwise.readBuffer(inputBuffer1);
 	bitArray2 = bitwise.readBuffer(inputBuffer2);
-	returnString = '';
+	returnArray = [];
 	while(iterator < bitLength1) {
 		if(bitArray1[iterator] == bitArray2[iterator]) {
-			returnString += 0;
+			returnArray[iterator] = 0;
 		} else {
-			returnString += 1;
+			returnArray[iterator] = 1;
 		}
 		iterator++;
 	}
-	var hexdata = new Buffer(returnString, 'binary').toString('hex');
-	return hexdata;
+debugger;
+	var hexdata = bitwise.createBuffer(returnArray);
+	return hexdata.toString('hex');
 }
 
 const xorAgainstKnown = function(hexIn) {
